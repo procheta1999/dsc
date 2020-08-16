@@ -4,12 +4,12 @@ import Head from "next/head"
 import Link from 'next/link'
 import {UserContext} from '../src/contexts/UserContext'
 import ScrollableTabsButtonAuto from './feed'
-import Router from 'next/router'
+import {useRouter} from "next/router";
 function HomePage () {
-
+const router=useRouter()
     const context = useContext(UserContext)
     if (context.user?.uid) {
-      return Router().push('/home');
+      return router.push('/home');
     }
    
     
