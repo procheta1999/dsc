@@ -86,7 +86,7 @@ const ScrollableTabsButtonAuto = () => {
   };
 
   if(!context.user?.uid) {
-    router.push({pathname : '/'})
+    router.push('/')
   }
 
 
@@ -255,7 +255,7 @@ const ScrollableTabsButtonAuto = () => {
 }
 const FeedLink = () => (
     <p>
-      <Link href={routes.FEED}>
+      <Link href='/feed'>
         <a>Feed</a>
       </Link>
     </p>

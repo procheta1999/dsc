@@ -40,7 +40,7 @@ const SignIn = () => {
   };
 
   if (context.user?.uid) {
-    return router.push('/feed');
+    return router.push('/home');
   }
 
     return (
