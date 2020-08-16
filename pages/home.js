@@ -8,6 +8,10 @@ import Router from 'next/router'
 function HomePage () {
 
     const context = useContext(UserContext)
+    if (context.user?.uid) {
+      return Router().push('/home');
+    }
+   
     
     
     return (
