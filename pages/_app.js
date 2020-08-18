@@ -1,7 +1,7 @@
-import React, { createContext, useState } from 'react';
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import App from 'next/app'
+import React, { createContext, useState } from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
+import App from "next/app";
 
 import firebaseConfig from "../src/config/firebaseConfig";
 
@@ -15,26 +15,28 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-
-
 function MyApp({ Component, pageProps }) {
-  const [ user, setUser ] = useState({});
-  return(
+  const [user, setUser] = useState();
+  return (
     <>
-    <ToastContainer/>
-     <UserContext.Provider value={{user, setUser}}>
-      <Component {...pageProps} />
-     </UserContext.Provider>
+      <ToastContainer />
+      <UserContext.Provider
+        value={{
+          user,
+          setCurrentUser: ({email, uid}) => setUser({ ...user, email:email, uid:uid }),
+        }}
+      >
+        <Component {...pageProps} />
+      </UserContext.Provider>
     </>
-  )
+  );
 }
-
 
 MyApp.getInitialProps = async (appContext) => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
 
-  return { ...appProps }
-}
+  return { ...appProps };
+};
 
-export default MyApp
+export default MyApp;
