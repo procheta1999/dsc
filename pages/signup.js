@@ -39,9 +39,6 @@ const Signup = () => {
     handleSignUp();
   };
 
-  if (context.user && context.user.uid) {
-    return router.push("/feed");
-  }
 
   return (
     <>
