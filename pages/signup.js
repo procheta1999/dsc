@@ -21,8 +21,10 @@ const Signup = () => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-
         context.setCurrentUser(res.user.email, res.user.uid);
+           if (res.user.uid) {
+             router.push("/home");
+           }
       })
       .catch((error) => {
         console.log(error);

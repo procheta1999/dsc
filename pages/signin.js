@@ -21,11 +21,10 @@ const SignIn = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
-        console.log({
-          email:res.user.email,
-          uid:res.user.uid
-        });
         setCurrentUser(res.user.email, res.user.uid);
+        if (res.user.uid) {
+          router.push("/home");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -39,10 +38,6 @@ const SignIn = () => {
     e.preventDefault();
     handleSignIn();
   };
-
-  if (user && user.uid) {
-    return router.push("/home");
-  }
 
   return (
     <>
