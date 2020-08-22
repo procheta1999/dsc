@@ -21,8 +21,9 @@ export default function LandingPage(){
       <main>
         
       <h1 className="title">
-        <img src="https://github.com/procheta1999/DSC-NSEC-Blogs/blob/master/public/dsc.png?raw=true" alt="dsc Logo" className="logo"/>
-          <b>DSC NSEC BLOGS-<i id="s">Write Your Own Story!</i></b>
+       <center> <img src="https://github.com/procheta1999/DSC-NSEC-Blogs/blob/master/public/dsc.png?raw=true" alt="dsc Logo" className="logo"/></center>
+    <br></br>
+         <center> <b>DSC NSEC BLOGS-<i id="s">Write Your Own Story!</i></b></center>
         </h1>
         <br></br>
         <img src="https://media.giphy.com/media/pOZhmE42D1WrCWATLK/giphy.gif"></img>
@@ -186,7 +187,8 @@ export default function LandingPage(){
         }
 
         main {
-          padding: 5rem 0;
+          padding: 3rem 3rem 3rem 3rem;
+margin:3rem 3rem 3rem 3rem;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -221,6 +223,8 @@ export default function LandingPage(){
           margin: 0;
           line-height: 1.15;
           font-size: 4rem;
+padding:2rem 2rem 2rem 2rem;
+margin:1rem 1rem 1rem 1rem;
         }
 
         .title a {
@@ -242,6 +246,8 @@ export default function LandingPage(){
         .description {
           line-height: 1.5;
           font-size: 3rem;
+padding:2rem 2rem 2rem;
+margin:2rem 2rem 2rem 2rem;
         }
 
         code {
@@ -294,9 +300,7 @@ export default function LandingPage(){
         }
 
         .logo {
-          height: 1.5em;
-          float:left;
-          margin-right:1em
+          height: 2em;
         }
 
         @media (max-width: 600px) {

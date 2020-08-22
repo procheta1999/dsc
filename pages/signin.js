@@ -7,6 +7,7 @@ import { IndexLink } from "./index";
 import useFormValidation from '../src/components/Auth/useFormValidation'
 import validateLogin from "../src/components/Auth/validateLogin";
 import firebase from "../src/firebase";
+import {PasswordForgetLink} from "./ForgotPassword";
 
 const INITIAL_STATE = {
   email: "",
@@ -107,6 +108,10 @@ const SignIn = () => {
                   <SignUpLink />
                 </center>
                 <br></br>
+                <center>
+                  <PasswordForgetLink/>
+                </center>
+                <br/><br/>
                 <center>
                   <button
                     variant="contained"
@@ -258,5 +263,14 @@ const SignIn = () => {
     </>
   );
 };
+
+export const SignInLink = () => (
+  <p>
+    Already have an account?{" "}
+    <Link href="/signin">
+      <a>Sign In</a>
+    </Link>
+  </p>
+);
 
 export default SignIn;

@@ -4,21 +4,26 @@ import Link from 'next/link'
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import TextField from "@material-ui/core/TextField"
+
 import Card from '@material-ui/core/Card';
 import { makeStyles, responsiveFontSizes } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
+
 import AppBar from '@material-ui/core/AppBar';
 import Input from '@material-ui/core/Input';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import InputBase from '@material-ui/core/InputBase';
+
 import Box from '@material-ui/core/Box';
-import Button from "@material-ui/core/Button"
+
 import { blue } from '@material-ui/core/colors';
 
 import {IndexLink} from "../../../pages/index";
 import { FirebaseContext } from "../../firebase";
+
+import CreateLink from '../Link/CreateLink'
+import LinkList from '../Link/LinkList'
+import SearchLinks from '../Link/SearchLinks';
+import Logout from '../Auth/Logout';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -63,14 +68,6 @@ const useStyles = makeStyles((theme) => ({
 fontSize:50,
   },
 }));
-
-  
-  
-
-
-
-  
-
   
 
 
@@ -99,90 +96,60 @@ const ScrollableTabsButtonAuto = () => {
           <Tab label="My feed📃" {...a11yProps(1)} />
           <Tab label="Publish🖋" {...a11yProps(2)} />
           <Tab label="Starred items⭐" {...a11yProps(3)} />
-          <Tab label="My account🙋‍♀️🙋‍♂️" {...a11yProps(4)} />
+          <Tab label="Search Blogs"  {...a11yProps(4)} />
           <Tab label="Notifications🔔" {...a11yProps(5)} />
-          <Tab label="Settings⚙" {...a11yProps(6)} />
+          <Tab label="My account🙋‍♀️🙋‍♂️" {...a11yProps(6)} />
           <Tab label="Log out📤" {...a11yProps(7)} />
          
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} id="new"><br></br>
-
-      </TabPanel>
-      <TabPanel value={value} index={1}>
         
-      <h1 className="title">
-      DSC NSEC BLOGS-<i id="s">Write Your Own Story!</i>
-      </h1>
-      <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
-        Start blogging today! ✒📝Share your stories📚, your experiences! 🙋‍♀️Did you get success at one throw 🤔or was it hard? Tell us your stories.✨We would love to hear them. 📖 
-        </Typography>
       </TabPanel>
+
+      <TabPanel value={value} index={1}>
+        <h1 className="title">
+        DSC NSEC BLOGS-<i id="s">Write Your Own Story!</i>
+        </h1>
+        <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
+          Start blogging today! ✒📝Share your stories📚, your experiences! 🙋‍♀️Did you get success at one throw 🤔or was it hard? Tell us your stories.✨We would love to hear them. 📖 
+        </Typography>
+        <br/><br/>
+        <LinkList/>
+      </TabPanel>
+
       <TabPanel value={value} index={2}>
         <br></br>
-        <form>
-        <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            style={{ marginTop: "20px", width: "100px",padding:"1px 1px 1px 1px", }}
-          >
-            <a>PUBLISH</a>
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            style={{ float:"right",marginTop: "20px", width: "100px",padding:"1px 1px 1px 1px" }}
-          >
-            <a>Save Draft</a>
-          </Button>
-          <br></br>
-          <Divider></Divider>
-          <br></br>
-        <InputBase
-        className={classes.margin}
-        placeholder="Title"
-        fullWidth
-        inputProps={{ style: {fontSize: 50},'aria-label': 'naked' }}
-      />
-        <br></br>
-        <br></br>
-        <br></br>
-        <TextField
-        height="60"
-          id="filled-textarea"
-          placeholder="Write Your Story here....."
-          multiline
-          fullWidth
-          inputProps={{style: {fontSize: 30,height:10000,lineHeight:1}}}
-        />
-        
-        </form>
+        <CreateLink/>
       </TabPanel>
+
       <TabPanel value={value} index={3}>
         <div id="e">
          Starred Stories ⭐
         </div>
       </TabPanel>
+
       <TabPanel value={value} index={4}>
-      {user.displayName}
+        <SearchLinks/>
       </TabPanel>
+
       <TabPanel value={value} index={5}>
         Item Six
       </TabPanel>
+
+      <TabPanel value={value} index={6}>
+        <h4>{user && user.displayName}</h4>
+        <p>Email Registered: { user && user.email}</p>
+        <p>{user && user.uid}</p>
+      </TabPanel>
+
       <TabPanel value={value} index={7}>
-      <Typography onClick={() => firebase.logout()} variant="h4" gutterBottom style={{ textAlign: "center" }}>
+      <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
         Do you wish to log out?
       </Typography>
-        <center><button
-            variant="contained"
-            color="primary"
-            type="submit"
-            style={{ marginTop: "20px", width: "200px" }}
-          >
-            <IndexLink/>
-          </button></center>
+        <center>
+          <Logout/>
+        </center>
       </TabPanel>
       <style jsx>{`
       .title {

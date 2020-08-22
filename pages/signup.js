@@ -8,6 +8,7 @@ import { IndexLink } from "./index";
 import useFormValidation from '../src/components/Auth/useFormValidation'
 import validateLogin from "../src/components/Auth/validateLogin";
 import firebase from "../src/firebase";
+import { SignInLink } from "./signin";
 
 const INITIAL_STATE = {
   name: "",
@@ -113,7 +114,9 @@ const Signup = () => {
                 <center>
                   <button type="submit">Sign Up</button>
                 </center>
-                <center>Ater creating account, go back to Login Page.</center>
+                <center>
+                  <SignInLink/>
+                </center>
                 <br></br>
                 <center>
                   <button

@@ -3,13 +3,10 @@ import ScrollableTabsButtonAuto from '../src/components/Feed/feed'
 import {useRouter} from "next/router";
 import { FirebaseContext } from "../src/firebase";
 
-function HomePage () {
+function HomePage (props) {
   const router = useRouter()
   const { user, firebase } = useContext(FirebaseContext); 
   
-  if(!user){
-    router.push('/signin')
-  }
     
     
     return (
